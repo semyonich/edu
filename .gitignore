@@ -1,0 +1,12 @@
+#IDE
+.idea
+
+#Windows exclusions
+*.bat
+*.exe
+
+#Python
+*.pyc
+
+#DataBase
+*.sqlite3
