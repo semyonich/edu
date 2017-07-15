@@ -1,13 +1,25 @@
 from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.contrib.auth.models import User
 
 from blog.models import Article
 
+from utils import gen_page_list
+
 # Create your views here.
 def blogs(request):
-    keyword = request.POST.get('keyword', '')
-    articles = Article.objects.filter(title__contains=keyword)
-    return render(request, 'blogs.html', {'articles': articles})
+    # keyword = request.POST.get('keyword', '')
+    page = request.GET.get('page', 1)
+    p = Paginator(Article.objects.all(), 2)
+    # filter(title__contains=keyword)
+    try:
+        final_articles = p.page(page)
+    except PageNotAnInteger:
+        final_articles = p.page(1)
+    except EmptyPage:
+        final_articles = p.page(p.num_pages)
+    return render(request, 'blogs.html', {'articles': final_articles,
+                                          'pagination': gen_page_list(page, p.num_pages)})
 
 
 def single_blog(request, article_id):
