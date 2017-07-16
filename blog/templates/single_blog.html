@@ -3,5 +3,5 @@
 {% block content %}
     Single block page!
     <h3>{{ article.title }}</h3>
-    <p>{{ article.body }}</p>
+    <p>{{ article.body | safe }}</p>
 {% endblock content %}

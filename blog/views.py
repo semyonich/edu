@@ -8,10 +8,10 @@ from utils import gen_page_list
 
 # Create your views here.
 def blogs(request):
-    # keyword = request.POST.get('keyword', '')
+    keyword = request.POST.get('keyword', '')
     page = request.GET.get('page', 1)
-    p = Paginator(Article.objects.all(), 2)
-    # filter(title__contains=keyword)
+    p = Paginator(Article.objects.filter(title__contains=keyword), 5)
+    #
     try:
         final_articles = p.page(page)
     except PageNotAnInteger:
