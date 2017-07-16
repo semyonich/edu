@@ -3,6 +3,7 @@
 
 #Windows exclusions
 *.bat
+*.exe
 
 #Python
 *.pyc
