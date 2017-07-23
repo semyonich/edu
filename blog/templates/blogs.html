@@ -27,7 +27,14 @@
                         <p>{{ article.body | safe }} | {{ article.added | naturaltime }}</p>
                     </div>
                     <div class="card-action">
-                        <a href="{% url 'single_article_page' article_id=article.id %}">show more...</a>
+                        <a href="{% url 'single_article_page' article_id=article.id %}">show more</a>
+                        <a href="{% url 'like_article' article_id=article.id %}">
+                            {% if request.user in article.liked_by.all %}
+                                Dislike me </a>[{{ article.liked_by.all.count }} like(s) ]
+                            {% else %}
+                                Like me </a> [{{ article.liked_by.all.count }} like(s) ]
+                            {% endif %}
+
                     </div>
                 </div>
             <p style="color: {{ article.title | color }};">{{ article.title}}</p>

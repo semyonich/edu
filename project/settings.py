@@ -9,6 +9,7 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
+# login:t@gmail.com, password:qwerty123456
 
 import os
 
@@ -23,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p@-_1-=#1@ftr+ka!f5x8blrtp483%cxt0af=1-h06b20g6#kz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['*']
 
@@ -149,3 +150,8 @@ REDACTOR_OPTIONS = {'lang': 'en'}
 REDACTOR_UPLOAD = 'uploads/'
 
 AUTH_USER_MODEL = 'accounts.User'
+
+try:
+    from .local_settings import *
+except ImportError:
+    pass

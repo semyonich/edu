@@ -1,5 +1,4 @@
 from django.shortcuts import render, HttpResponse
-from django.conf import settings
 
 from accounts.models import User
 from events.models import Event

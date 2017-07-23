@@ -6,6 +6,7 @@
 *.exe
 
 #Python
+local_settings.py
 *.pyc
 
 #media
