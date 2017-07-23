@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.11/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.11/ref/settings/
 """
-# login:t@gmail.com, password:qwerty123456
+
 
 import os
 
@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     # 3rt party apps
     'redactor',
     'solo',
+    'rest_framework',
+    'rest_framework_docs',
 ]
 
 MIDDLEWARE = [
