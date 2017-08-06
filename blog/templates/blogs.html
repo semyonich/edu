@@ -5,13 +5,13 @@
 
 {% block content %}
     This page will show you all blogs on the website!
-    <form action="{% url 'all_articles' %}" method="POST">
-        {% csrf_token %}
+    <form action="{% url 'all_articles' %}" method="GET">
+{#        {% csrf_token %}#}
         <div class="row">
             <div class="input-field col s6">
                 <input name="keyword" id="keyword" type="text" class="validate">
                 <label class="active" for="keyword">Search keyword</label>
-                <button class="waves-effect waves-light btn">Search!</button>
+                <button type="submit" class="waves-effect waves-light btn">Search!</button>
             </div>
         </div>
     </form>
@@ -28,7 +28,7 @@
                     </div>
                     <div class="card-action">
                         <a href="{% url 'single_article_page' article_id=article.id %}">show more</a>
-                        <a href="{% url 'like_article' article_id=article.id %}">
+                        <a href="{% url 'like_article' article_id=article.id%}?keyword={{ keyword }}?page={{ articles.number }}">
                             {% if request.user in article.liked_by.all %}
                                 Dislike me </a>[{{ article.liked_by.all.count }} like(s) ]
                             {% else %}

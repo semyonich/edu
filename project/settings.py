@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'solo',
     'rest_framework',
     'rest_framework_docs',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -157,3 +158,23 @@ try:
     from .local_settings import *
 except ImportError:
     pass
+
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '5d252d66ae24f5'
+EMAIL_HOST_PASSWORD = 'e3eea7f5da5ec3'
+EMAIL_PORT = '2525'
+
+# Django REST Framework settings
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PAGINATION_CLASS': (
+        'rest_framework.pagination.LimitOffsetPagination',
+    ),
+    'PAGE_SIZE': 10
+}
